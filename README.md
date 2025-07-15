@@ -13,11 +13,12 @@ trans-evals provides tools and datasets for systematically evaluating how langua
 
 ## Features
 
-- Integration with existing bias datasets (TANGO, HolisticBias, CrowS-Pairs, BBQ)
-- Template-based test generation for trans-specific evaluations
-- Counterfactual data augmentation for systematic bias testing
-- Multiple evaluation metrics (toxicity, regard, sentiment)
-- Support for multiple LLMs via OpenRouter API (OpenAI, Anthropic, Google, Meta, Mistral, and more)
+- **Comprehensive Dataset Framework**: 186+ high-quality examples including neo-pronouns and intersectional identities
+- **Statistical Rigor**: Mann-Whitney U tests, effect size calculations, and confidence intervals
+- **Multiple Model Support**: OpenRouter API integration (OpenAI, Anthropic, Google, Meta, Mistral, and more)
+- **Web Interface**: FastHTML-based website showcasing evaluation results and methodology
+- **Template-based Generation**: Trans-specific test creation and counterfactual augmentation
+- **Multiple Evaluation Metrics**: Misgendering, toxicity, sentiment, and regard analysis
 - Comprehensive visualization and reporting tools
 
 ## Installation
@@ -160,12 +161,30 @@ for original, counterfactual in pairs:
     pass
 ```
 
+## Results Website
+
+View our comprehensive evaluation results at the FastHTML-powered website:
+
+```bash
+# Run the website locally
+cd website
+python app.py
+# Visit http://localhost:8000
+```
+
+The website features:
+- **Interactive Results**: Latest statistical analysis and model comparisons
+- **Methodology Details**: Comprehensive framework explanation
+- **Real-time Data**: Automatically loads latest evaluation results
+- **Publication Ready**: Professional visualizations and statistical summaries
+
 ## Documentation
 
 - [User Guide](docs/USER_GUIDE.md) - Comprehensive usage documentation
 - [API Reference](docs/API.md) - Detailed API documentation (coming soon)
 - [Examples](examples/) - Example scripts and notebooks
 - [Notebooks](notebooks/quickstart.ipynb) - Interactive Jupyter notebook tutorial
+- [Website](website/) - FastHTML results website
 
 ## Contributing
 
