@@ -6,6 +6,8 @@ from .metrics import (
     BiasMetrics
 )
 from .evaluator import BiasEvaluator, EvaluationResult
+from .llm_evaluator import LLMBiasEvaluator
+from .llm_metrics import LLMBiasMetrics, LLMMetricResult
 
 __all__ = [
     "MisgenderingDetector",
@@ -14,5 +16,8 @@ __all__ = [
     "SentimentAnalyzer",
     "BiasMetrics",
     "BiasEvaluator",
-    "EvaluationResult"
+    "EvaluationResult",
+    "LLMBiasEvaluator",
+    "LLMBiasMetrics",
+    "LLMMetricResult"
 ]

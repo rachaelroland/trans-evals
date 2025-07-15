@@ -4,10 +4,14 @@ This replaces VADER, ToxicityScorer, and RegardScorer with Claude Sonnet 4.
 """
 
 import asyncio
-from trans_evals import load_dataset, OpenRouterModel
-from trans_evals.evaluation.llm_evaluator import LLMBiasEvaluator
-from trans_evals.database import EvaluationPersistence
 import os
+import sys
+from pathlib import Path
+
+# Add parent directory to path for imports
+sys.path.append(str(Path(__file__).parent.parent))
+
+from src import load_dataset, OpenRouterModel, LLMBiasEvaluator, EvaluationPersistence
 from dotenv import load_dotenv
 
 # Load environment variables
