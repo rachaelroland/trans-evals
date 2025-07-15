@@ -72,6 +72,10 @@ temp/
 
 # Test outputs
 tests/logs/
+tests/results/*.json
+tests/results/*.png
+tests/results/*.log
+!tests/results/.gitkeep
 
 # API keys and credentials
 credentials/
