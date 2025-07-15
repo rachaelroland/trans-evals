@@ -100,7 +100,7 @@ def index():
                 Div(
                     H1("Trans-Evals", cls="gradient-text", style="font-size: 4rem; font-weight: bold; margin-bottom: 1rem;"),
                     H2("Evaluating Language Models for Trans-Inclusive Language", style="font-size: 1.5rem; color: #c9d1d9; font-weight: normal; margin-bottom: 1.5rem;"),
-                    P("A comprehensive framework for rigorous evaluation of AI language models on trans-inclusive language generation, with statistical analysis suitable for peer review.", 
+                    P("A comprehensive framework for rigorous evaluation of AI language models on trans-inclusive language generation. Now featuring LLM-based evaluation with Claude Sonnet 4 for nuanced bias detection.", 
                       style="font-size: 1.125rem; color: #8b949e; max-width: 800px; margin: 0 auto;"),
                     style="text-align: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem;"
                 ),
@@ -212,6 +212,16 @@ def index():
                                     Li("Content validation and deduplication", style="color: #8b949e;"),
                                     Li("Balanced sampling across bias types", style="color: #8b949e;"),
                                     Li("Comprehensive logging and error handling", style="color: #8b949e;"),
+                                    style="list-style: disc; list-style-position: inside; margin-left: 1rem;"
+                                )
+                            ),
+                            Div(
+                                H3("LLM-Based Evaluation", style="font-size: 1.25rem; font-weight: 600; color: white; margin-bottom: 1rem;"),
+                                Ul(
+                                    Li("Claude Sonnet 4 for nuanced bias detection", style="color: #8b949e;"),
+                                    Li("Context-aware analysis of microaggressions", style="color: #8b949e;"),
+                                    Li("SQLite database for result persistence", style="color: #8b949e;"),
+                                    Li("Detailed explanations for each metric", style="color: #8b949e;"),
                                     style="list-style: disc; list-style-position: inside; margin-left: 1rem;"
                                 )
                             ),
@@ -485,9 +495,9 @@ def methodology():
                                 H3("Toxicity Analysis", style="font-size: 1.25rem; font-weight: 600; color: white; margin-bottom: 0.75rem;"),
                                 P("Detects harmful or discriminatory language", style="color: #8b949e; margin-bottom: 0.5rem;"),
                                 Ul(
-                                    Li("Perspective API-based scoring", style="color: #8b949e;"),
-                                    Li("Threshold: <0.1 excellent, <0.2 acceptable", style="color: #8b949e;"),
-                                    Li("Trans-specific toxicity patterns", style="color: #8b949e;"),
+                                    Li("LLM-based analysis with Claude Sonnet 4", style="color: #8b949e;"),
+                                    Li("Trans-specific microaggression detection", style="color: #8b949e;"),
+                                    Li("Detailed explanations for each score", style="color: #8b949e;"),
                                     style="list-style: disc; list-style-position: inside; margin-left: 1rem; font-size: 0.875rem;"
                                 ),
                                 style="background-color: #21262d; padding: 1rem; border-radius: 0.5rem; border: 1px solid #30363d;"
@@ -496,9 +506,9 @@ def methodology():
                                 H3("Sentiment Analysis", style="font-size: 1.25rem; font-weight: 600; color: white; margin-bottom: 0.75rem;"),
                                 P("Measures emotional tone and warmth", style="color: #8b949e; margin-bottom: 0.5rem;"),
                                 Ul(
-                                    Li("VADER sentiment analyzer", style="color: #8b949e;"),
-                                    Li("Scale: 0-1 (negative to positive)", style="color: #8b949e;"),
-                                    Li("Contextual sentiment evaluation", style="color: #8b949e;"),
+                                    Li("LLM sentiment analysis with trans perspective", style="color: #8b949e;"),
+                                    Li("Detects affirming vs invalidating language", style="color: #8b949e;"),
+                                    Li("Context-aware emotional tone assessment", style="color: #8b949e;"),
                                     style="list-style: disc; list-style-position: inside; margin-left: 1rem; font-size: 0.875rem;"
                                 ),
                                 style="background-color: #21262d; padding: 1rem; border-radius: 0.5rem; border: 1px solid #30363d;"
@@ -507,14 +517,59 @@ def methodology():
                                 H3("Regard Assessment", style="font-size: 1.25rem; font-weight: 600; color: white; margin-bottom: 0.75rem;"),
                                 P("Evaluates respectful treatment and dignity", style="color: #8b949e; margin-bottom: 0.5rem;"),
                                 Ul(
-                                    Li("Custom regard classification", style="color: #8b949e;"),
-                                    Li("Binary positive/negative assessment", style="color: #8b949e;"),
-                                    Li("Trans-inclusive respect metrics", style="color: #8b949e;"),
+                                    Li("LLM-based regard scoring with detailed indicators", style="color: #8b949e;"),
+                                    Li("Detects stereotyping, othering, and erasure", style="color: #8b949e;"),
+                                    Li("Trans-inclusive respect evaluation", style="color: #8b949e;"),
+                                    style="list-style: disc; list-style-position: inside; margin-left: 1rem; font-size: 0.875rem;"
+                                ),
+                                style="background-color: #21262d; padding: 1rem; border-radius: 0.5rem; border: 1px solid #30363d;"
+                            ),
+                            Div(
+                                H3("Stereotype Detection", style="font-size: 1.25rem; font-weight: 600; color: white; margin-bottom: 0.75rem;"),
+                                P("Identifies biased assumptions and stereotypes", style="color: #8b949e; margin-bottom: 0.5rem;"),
+                                Ul(
+                                    Li("LLM-based stereotype identification", style="color: #8b949e;"),
+                                    Li("Detects medicalization, fetishization, erasure", style="color: #8b949e;"),
+                                    Li("Severity ratings for each stereotype found", style="color: #8b949e;"),
                                     style="list-style: disc; list-style-position: inside; margin-left: 1rem; font-size: 0.875rem;"
                                 ),
                                 style="background-color: #21262d; padding: 1rem; border-radius: 0.5rem; border: 1px solid #30363d;"
                             ),
                             style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;"
+                        ),
+                        style="margin-bottom: 2rem;"
+                    ),
+                    
+                    # LLM-Based Evaluation Section
+                    Section(
+                        H2("LLM-Based Evaluation System", style="font-size: 2rem; font-weight: bold; color: white; margin-bottom: 1.5rem;"),
+                        Div(
+                            P("Our framework now uses Claude Sonnet 4 for nuanced, context-aware evaluation:", style="color: #8b949e; margin-bottom: 1.5rem;"),
+                            Div(
+                                H3("Key Advantages", style="font-size: 1.25rem; font-weight: 600; color: white; margin-bottom: 1rem;"),
+                                Ul(
+                                    Li("Context-aware understanding of subtle biases and microaggressions", style="color: #8b949e;"),
+                                    Li("Trans-specific evaluation criteria built into prompts", style="color: #8b949e;"),
+                                    Li("Detailed explanations for each metric score", style="color: #8b949e;"),
+                                    Li("Unified evaluation model instead of multiple NLP tools", style="color: #8b949e;"),
+                                    Li("All results stored in SQLite database for analysis", style="color: #8b949e;"),
+                                    Li("Better detection of intersectional biases", style="color: #8b949e;"),
+                                    style="list-style: disc; list-style-position: inside; margin-left: 1rem; margin-bottom: 1rem;"
+                                ),
+                                style="background-color: #161b22; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #30363d; margin-bottom: 1rem;"
+                            ),
+                            Div(
+                                H3("Database Storage", style="font-size: 1.25rem; font-weight: 600; color: white; margin-bottom: 1rem;"),
+                                P("All evaluation results are persisted with:", style="color: #8b949e; margin-bottom: 0.75rem;"),
+                                Ul(
+                                    Li("Complete evaluation history and metrics", style="color: #8b949e;"),
+                                    Li("Detailed explanations from LLM analysis", style="color: #8b949e;"),
+                                    Li("Statistical aggregations and comparisons", style="color: #8b949e;"),
+                                    Li("Query interface for custom analysis", style="color: #8b949e;"),
+                                    style="list-style: disc; list-style-position: inside; margin-left: 1rem;"
+                                ),
+                                style="background-color: #161b22; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #30363d;"
+                            )
                         ),
                         style="margin-bottom: 2rem;"
                     ),
