@@ -411,6 +411,109 @@ def results():
                         )
                     ),
                     
+                    # O3 Pro Framework Evaluation
+                    Section(
+                        H2("Independent Framework Evaluation", style="font-size: 2rem; font-weight: bold; color: white; margin-bottom: 1.5rem;"),
+                        Div(
+                            P("An independent evaluation of the Trans-Evals framework highlights its significance and methodological strengths:", 
+                              style="color: #8b949e; margin-bottom: 1.5rem;"),
+                            
+                            # Purpose and Novelty
+                            Div(
+                                H3("Purpose and Novelty", style="font-size: 1.25rem; font-weight: 600; color: white; margin-bottom: 1rem;"),
+                                P("Trans-Evals is the first open framework dedicated to quantitatively auditing trans-inclusive language generation in LLMs. It couples a purpose-built dataset (186 prompts spanning neo-pronouns and intersectional identities) with an LLM-based evaluator (Claude 4) to capture subtle micro-aggressions beyond traditional toxicity filters.",
+                                  style="color: #8b949e;"),
+                                style="background-color: #161b22; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #30363d; margin-bottom: 1rem;"
+                            ),
+                            
+                            # Methodological Strengths
+                            Div(
+                                H3("Methodological Strengths", style="font-size: 1.25rem; font-weight: 600; color: white; margin-bottom: 1rem;"),
+                                Ul(
+                                    Li(Strong("Comprehensive metrics", style="color: #c9d1d9;"), " – misgendering, toxicity, sentiment, respect/regard, stereotypes – assessed in context by a single high-capacity model, yielding granular explanations for each score.", style="color: #8b949e; margin-bottom: 0.5rem;"),
+                                    Li(Strong("Statistical rigor", style="color: #c9d1d9;"), " – Mann-Whitney U tests, Cohen's d, and bootstrap CIs support claims of significance and effect size, meeting peer-review standards.", style="color: #8b949e; margin-bottom: 0.5rem;"),
+                                    Li(Strong("Reproducibility", style="color: #c9d1d9;"), " – fixed random seeds, SQLite logging, and an open-source pipeline (GitHub) ensure results can be verified or extended by other labs.", style="color: #8b949e;"),
+                                    style="list-style: disc; list-style-position: inside; margin-left: 1rem;"
+                                ),
+                                style="background-color: #161b22; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #30363d; margin-bottom: 1rem;"
+                            ),
+                            
+                            # Key Findings Table
+                            Div(
+                                H3("Key Findings (July 2025 Snapshot)", style="font-size: 1.25rem; font-weight: 600; color: white; margin-bottom: 1rem;"),
+                                Div(
+                                    Table(
+                                        Thead(
+                                            Tr(
+                                                Th("Metric", style="padding: 0.75rem 1rem; text-align: left; font-size: 0.75rem; font-weight: 500; color: #8b949e; text-transform: uppercase;"),
+                                                Th("Claude 4", style="padding: 0.75rem 1rem; text-align: center; font-size: 0.75rem; font-weight: 500; color: #8b949e; text-transform: uppercase;"),
+                                                Th("Kimi K2", style="padding: 0.75rem 1rem; text-align: center; font-size: 0.75rem; font-weight: 500; color: #8b949e; text-transform: uppercase;"),
+                                                Th("Llama 3.3", style="padding: 0.75rem 1rem; text-align: center; font-size: 0.75rem; font-weight: 500; color: #8b949e; text-transform: uppercase;"),
+                                                Th("Note", style="padding: 0.75rem 1rem; text-align: left; font-size: 0.75rem; font-weight: 500; color: #8b949e; text-transform: uppercase;"),
+                                                style="background-color: #21262d;"
+                                            )
+                                        ),
+                                        Tbody(
+                                            Tr(
+                                                Td("Sentiment ↑", style="padding: 0.75rem 1rem; font-size: 0.875rem; color: #c9d1d9;"),
+                                                Td("0.902", style="padding: 0.75rem 1rem; text-align: center; font-size: 0.875rem; color: #c9d1d9; font-weight: bold;"),
+                                                Td("0.805", style="padding: 0.75rem 1rem; text-align: center; font-size: 0.875rem; color: #c9d1d9;"),
+                                                Td("0.561", style="padding: 0.75rem 1rem; text-align: center; font-size: 0.875rem; color: #c9d1d9;"),
+                                                Td("Claude 4 ≫ others (p < 0.001)", style="padding: 0.75rem 1rem; font-size: 0.875rem; color: #8b949e;"),
+                                                style="border-top: 1px solid #30363d;"
+                                            ),
+                                            Tr(
+                                                Td("Regard ↑", style="padding: 0.75rem 1rem; font-size: 0.875rem; color: #c9d1d9;"),
+                                                Td("0.661", style="padding: 0.75rem 1rem; text-align: center; font-size: 0.875rem; color: #c9d1d9;"),
+                                                Td("0.661", style="padding: 0.75rem 1rem; text-align: center; font-size: 0.875rem; color: #c9d1d9;"),
+                                                Td("0.536", style="padding: 0.75rem 1rem; text-align: center; font-size: 0.875rem; color: #c9d1d9;"),
+                                                Td("Medium sig. vs Llama (p ≈ 0.03)", style="padding: 0.75rem 1rem; font-size: 0.875rem; color: #8b949e;"),
+                                                style="border-top: 1px solid #30363d;"
+                                            ),
+                                            Tr(
+                                                Td("Toxicity ↓", style="padding: 0.75rem 1rem; font-size: 0.875rem; color: #c9d1d9;"),
+                                                Td("0.001", style="padding: 0.75rem 1rem; text-align: center; font-size: 0.875rem; color: #c9d1d9;"),
+                                                Td("0.003", style="padding: 0.75rem 1rem; text-align: center; font-size: 0.875rem; color: #c9d1d9;"),
+                                                Td("0.002", style="padding: 0.75rem 1rem; text-align: center; font-size: 0.875rem; color: #c9d1d9;"),
+                                                Td("All low; Claude vs Llama sig. (p < 0.001)", style="padding: 0.75rem 1rem; font-size: 0.875rem; color: #8b949e;"),
+                                                style="border-top: 1px solid #30363d;"
+                                            ),
+                                            Tr(
+                                                Td("Misgendering ↑", style="padding: 0.75rem 1rem; font-size: 0.875rem; color: #c9d1d9;"),
+                                                Td("0.426", style="padding: 0.75rem 1rem; text-align: center; font-size: 0.875rem; color: #c9d1d9;"),
+                                                Td("0.429", style="padding: 0.75rem 1rem; text-align: center; font-size: 0.875rem; color: #c9d1d9;"),
+                                                Td("0.429", style="padding: 0.75rem 1rem; text-align: center; font-size: 0.875rem; color: #c9d1d9;"),
+                                                Td("No sig. diff.; all ≈ 43% accurate", style="padding: 0.75rem 1rem; font-size: 0.875rem; color: #8b949e;"),
+                                                style="border-top: 1px solid #30363d;"
+                                            ),
+                                            style="background-color: #161b22;"
+                                        ),
+                                        style="width: 100%; border-collapse: collapse;"
+                                    ),
+                                    style="overflow-x: auto; background-color: #161b22; border-radius: 0.5rem; border: 1px solid #30363d;"
+                                ),
+                                P("These results align with the 2023 MISGENDERED study, which found LLMs achieve only 7–35% accuracy on neo-pronouns out-of-the-box.",
+                                  style="color: #8b949e; margin-top: 1rem; font-style: italic;"),
+                                style="margin-bottom: 1rem;"
+                            ),
+                            
+                            # Opportunities & Next Steps
+                            Div(
+                                H3("Opportunities & Next Steps", style="font-size: 1.25rem; font-weight: 600; color: white; margin-bottom: 1rem;"),
+                                Ul(
+                                    Li(Strong("Human validation loop", style="color: #c9d1d9;"), " – cross-check Claude-based scores with trans/non-binary annotators to benchmark evaluator reliability.", style="color: #8b949e; margin-bottom: 0.5rem;"),
+                                    Li(Strong("Domain-specific slices", style="color: #c9d1d9;"), " – extend prompts to health-care dialogues (e.g., intake forms, tele-health chatbots) to study clinical impact.", style="color: #8b949e; margin-bottom: 0.5rem;"),
+                                    Li(Strong("Additional models", style="color: #c9d1d9;"), " – add GPT-4o or Google Gemini to broaden comparisons; many labs have credits that could help.", style="color: #8b949e; margin-bottom: 0.5rem;"),
+                                    Li(Strong("Community collaboration", style="color: #c9d1d9;"), " – partner with trans advocacy groups for dataset review (\"Nothing about us without us\").", style="color: #8b949e; margin-bottom: 0.5rem;"),
+                                    Li(Strong("Framework generalization", style="color: #c9d1d9;"), " – replicate methodology for racial, disability, or religious bias audits; each expansion will require new subject-matter expertise.", style="color: #8b949e;"),
+                                    style="list-style: disc; list-style-position: inside; margin-left: 1rem;"
+                                ),
+                                style="background-color: #161b22; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #30363d;"
+                            )
+                        ),
+                        style="margin-bottom: 3rem;"
+                    ),
+                    
                     style="max-width: 1200px; margin: 0 auto; padding: 2rem 1rem;"
                 )
             ),
