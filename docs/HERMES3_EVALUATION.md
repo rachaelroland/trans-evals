@@ -1,23 +1,85 @@
-# Evaluating Hermes 3 Dataset with Trans-Evals
+# Professional Dataset Evaluation with Trans-Evals
 
 ## Overview
 
-The trans-evals framework can be used to evaluate any dataset for trans-inclusive language bias. This guide shows how to analyze the Hermes 3 dataset for potential issues related to trans and non-binary representation.
+The trans-evals framework provides professional-grade dataset evaluation for trans-inclusive language bias, designed to meet the standards of experienced AI researchers and dataset maintainers. This guide covers both basic and professional evaluation approaches for datasets like Hermes 3.
 
-## What Gets Evaluated
+## Why Professional Evaluation Matters
 
-The evaluation process:
+Traditional keyword-based approaches miss crucial context and nuance. The professional evaluator addresses these limitations:
 
-1. **Scans the dataset** for conversations containing gender-related topics
-2. **Extracts relevant samples** using keyword matching (pronouns, identity terms, etc.)
-3. **Analyzes each sample** using Claude Sonnet 4 for:
-   - **Toxicity**: Harmful language, discrimination, microaggressions
-   - **Regard**: Respectful vs. disrespectful treatment
-   - **Sentiment**: Positive vs. negative emotional tone
-   - **Stereotypes**: Biased assumptions and harmful stereotypes
-4. **Generates a report** with aggregate statistics and recommendations
+### Beyond Keywords
+- **LLM-based relevance scoring** instead of simple keyword matching
+- **Contextual understanding** of how gender/identity topics are discussed
+- **Implicit bias detection** that keywords cannot capture
+
+### Statistical Rigor
+- **Stratified sampling** ensures representative evaluation
+- **Confidence intervals** and margin of error calculations
+- **Statistical power analysis** for validity
+- **Multiple validity checks** (representativeness, internal consistency, convergent validity)
+
+### Actionable Insights
+- **Weighted multi-criteria assessment** based on impact
+- **Severity classifications** for prioritization
+- **Specific examples and quotes** for each issue found
+- **Risk assessment** for training suitability
+
+## Professional Evaluation Methodology
+
+### Robust Sampling Strategy
+
+Unlike simple keyword matching, the professional evaluator uses:
+
+1. **LLM-based relevance scoring** - Each sample is analyzed for relevance using Claude Sonnet 4
+2. **Stratified sampling** - Ensures representation across relevance levels and content types
+3. **Statistical validation** - Calculates margin of error and statistical power
+4. **Multi-criteria assessment** - Five professionally-defined evaluation criteria
+
+### Evaluation Criteria
+
+1. **Representation Quality** (Weight: 2.0)
+   - Accuracy and respectfulness of gender identity representation
+   - Presence of diverse identities and experiences
+
+2. **Harmful Content** (Weight: 3.0)
+   - Toxic, discriminatory, or harmful language
+   - Microaggressions and implicit bias
+
+3. **Stereotype Prevalence** (Weight: 2.0)
+   - Frequency and severity of stereotypical representations
+   - Common tropes (medicalization, tragedy narratives, etc.)
+
+4. **Language Inclusivity** (Weight: 1.5)
+   - Use of inclusive vs. exclusionary language patterns
+   - Correct pronoun usage and identity terminology
+
+5. **Contextual Appropriateness** (Weight: 1.5)
+   - Appropriate handling of gender/identity in context
+   - Relevance vs. gratuitous inclusion
 
 ## Quick Start
+
+### Professional Evaluation (Recommended)
+
+```python
+from trans_evals import ProfessionalDatasetEvaluator
+import asyncio
+
+async def evaluate():
+    evaluator = ProfessionalDatasetEvaluator(
+        dataset_path="path/to/hermes3.json",
+        sample_size=500,
+        confidence_level=0.95,
+        evaluation_model="anthropic/claude-3.5-sonnet"
+    )
+    report, results = await evaluator.run_professional_evaluation()
+    print(report)
+
+asyncio.run(evaluate())
+```
+
+### Basic Evaluation (Simple Keyword-Based)
 
 ```python
 from hermes3_dataset_evaluation import Hermes3DatasetEvaluator
@@ -36,8 +98,31 @@ asyncio.run(evaluate())
 
 ## Command Line Usage
 
+### Professional Evaluation
+
 ```bash
-# Basic evaluation
+# Standard professional evaluation
+python professional_hermes3_evaluation.py /path/to/hermes3.json
+
+# High-confidence evaluation with larger sample
+python professional_hermes3_evaluation.py /path/to/hermes3.json \
+    --sample-size 1000 \
+    --confidence 0.99 \
+    --output-dir results/
+
+# Analyze existing results
+python professional_hermes3_evaluation.py \
+    --analyze results/hermes3_professional_eval.db
+
+# Compare two evaluations
+python professional_hermes3_evaluation.py \
+    --compare eval1.json eval2.json
+```
+
+### Basic Evaluation
+
+```bash
+# Simple keyword-based evaluation
 python hermes3_dataset_evaluation.py /path/to/hermes3.json
 
 # With options
@@ -79,31 +164,69 @@ The evaluator supports multiple dataset formats:
    - 0.1-0.3: Some stereotypes present
    - > 0.3: Significant stereotyping
 
-### Report Contents
+### Professional Report Format
 
-The generated report includes:
+The professional evaluation generates a publication-quality report with:
 
 ```markdown
-# Hermes 3 Dataset Evaluation Report
+# Professional Dataset Evaluation Report
+
 ## Executive Summary
-- Total samples analyzed
-- Key findings summary
+- Overall bias score with interpretation
+- Key findings and risk assessment
+- Suitability for training recommendation
+
+## Methodology
+- Sampling strategy (stratified, LLM-based relevance)
+- Sample size and confidence intervals
+- Statistical power analysis
+- Evaluation criteria and weights
+
+## Detailed Findings
+1. Issue Distribution
+   - Tabulated by criterion with percentages
+   - Statistical significance indicators
+   
+2. Severity Analysis
+   - Distribution of issue severity levels
+   - Specific examples and quotes
+   
+3. Statistical Validation
+   - Sample representativeness assessment
+   - Internal consistency (Cronbach's α)
+   - Convergent validity measures
+
+## Recommendations
+- Priority actions ranked by frequency
+- Risk assessment (Low/Moderate/High)
+- Specific remediation strategies
+
+## Technical Appendix
+- Criteria weight justifications
+- Methodological limitations
+- Reproducibility information
+```
+
+### Basic Report Format
+
+The basic evaluation provides:
+
+```markdown
+# Dataset Evaluation Report
+## Executive Summary
+- Sample size and coverage
+- Key metrics summary
 
 ## Aggregate Statistics
 - Mean scores for each metric
-- Distribution of problematic content
-- Percentage of samples with issues
+- Problematic sample counts
 
 ## Issues Identified
-- High toxicity samples
-- Low regard samples
-- Negative sentiment samples
-- Stereotyping samples
+- Lists by issue type
+- Example IDs for review
 
 ## Recommendations
-- Content review suggestions
-- Bias mitigation strategies
-- Dataset improvement ideas
+- General improvement suggestions
 ```
 
 ## Database Storage

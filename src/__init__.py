@@ -4,6 +4,7 @@ from .evaluation import BiasEvaluator, EvaluationResult, LLMBiasEvaluator
 from .models import OpenAIModel, AnthropicModel, HuggingFaceModel, OpenRouterModel
 from .templates import TemplateGenerator, TransSpecificTemplates
 from .database import EvaluationPersistence
+from .dataset_evaluation import ProfessionalDatasetEvaluator
 
 __version__ = "0.1.0"
 
@@ -20,5 +21,6 @@ __all__ = [
     "OpenRouterModel",
     "TemplateGenerator",
     "TransSpecificTemplates",
-    "EvaluationPersistence"
+    "EvaluationPersistence",
+    "ProfessionalDatasetEvaluator"
 ]
