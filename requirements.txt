@@ -5,6 +5,7 @@ torch>=2.0.0
 transformers>=4.30.0
 datasets>=2.10.0
 evaluate>=0.4.0
+huggingface-hub>=0.16.0
 
 # API clients
 openai>=1.0.0
@@ -36,6 +37,9 @@ aiohttp>=3.8.0
 
 # Database
 sqlalchemy>=2.0.0
+
+# Data formats
+pyarrow>=12.0.0
 
 # Web framework for results website
 python-fasthtml>=0.2.4
